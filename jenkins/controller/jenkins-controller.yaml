@@ -1,0 +1,21 @@
+---
+# podman-compose -f <this_file>.yaml up --build --detach
+version: '3.8'
+
+services:
+  jenkins_controller:
+    image: jenkins/jenkins:lts-jdk17
+    privileged: true
+    user: root
+    container_name: jenkins_controller
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - type: volume
+        source: jenkins_home
+        target: /var/jenkins_home
+
+volumes:
+  jenkins_home:
+    name: jenkins_home
