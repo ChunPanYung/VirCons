@@ -1,0 +1,43 @@
+---
+# Default location: $JENKINS_HOME/jenkins.yaml
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - basicSSHUserPrivateKey:
+              id: "jenkins_agent"
+              privateKeySource:
+                directEntry:
+                  privateKey: "replace me with private key after import"
+              scope: SYSTEM
+              username: "jenkins"
+
+jenkins:
+  nodes:
+    - permanent:
+        labelString: "linux python"
+        launcher:
+          ssh:
+            credentialsId: "jenkins_agent"
+            host: "ssh-agent-python"
+            port: 22
+            sshHostKeyVerificationStrategy: >
+              nonVerifyingKeyVerificationStrategy
+        name: "ssh-agent-python"
+        numExecutors: 2
+        remoteFS: "/home/jenkins/agent"
+        retentionStrategy: "always"
+  securityRealm:
+    local:
+      allowljSignup: false
+
+appearance:
+  prism:
+    theme: PRISM
+  themeManager:
+    disableUserThemes: false
+    theme: "darkSystem"
+
+unclassified:
+
+tool:
