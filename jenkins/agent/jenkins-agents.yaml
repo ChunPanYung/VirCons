@@ -7,7 +7,7 @@ services:
     image: jenkins/ssh-agent
     privileged: true
     user: root
-    container_name: jenkins_agent-0
+    container_name: jenkins-agent-0
     expose:
       - 22
     environment:

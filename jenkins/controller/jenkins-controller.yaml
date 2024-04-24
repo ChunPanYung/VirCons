@@ -7,7 +7,7 @@ services:
     image: jenkins/jenkins:lts-jdk17
     privileged: true
     user: root
-    container_name: jenkins_controller
+    container_name: jenkins-controller
     ports:
       - 8080:8080
       - 50000:50000
