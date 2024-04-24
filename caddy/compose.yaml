@@ -1,0 +1,21 @@
+---
+volumes:
+  caddy_data:
+  caddy_config:
+
+services:
+  caddy:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - 80:80  # For HTTP -> HTTPS redirects
+      - 443:443
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/caddy_data
+      - caddy_config:/config
+    healthcheck:
+      test: ["CMD", "caddy", "version"]

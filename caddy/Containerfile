@@ -1,0 +1,5 @@
+# buildah bud --tag caddy:custom-0
+FROM docker.io/library/caddy:latest
+COPY  Caddyfile /etc/caddy/Caddyfile
+
+
