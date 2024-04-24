@@ -4,10 +4,10 @@ version: '3.8'
 
 services:
   jenkins_agent:
-    image: jenkins/ssh-agent
+    image: local/ssh-agent-python:latest
     privileged: true
     user: root
-    container_name: jenkins-agent-0
+    container_name: ssh-agent-python
     expose:
       - 22
     environment:
