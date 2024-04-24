@@ -19,11 +19,11 @@ jenkins:
         launcher:
           ssh:
             credentialsId: "jenkins_agent"
-            host: "jenkins-agent-0"
+            host: "ssh-agent-python"
             port: 22
             sshHostKeyVerificationStrategy: >
               nonVerifyingKeyVerificationStrategy
-        name: "jenkins-agent-0"
+        name: "ssh-agent-python"
         numExecutors: 2
         remoteFS: "/home/jenkins/agent"
         retentionStrategy: "always"
