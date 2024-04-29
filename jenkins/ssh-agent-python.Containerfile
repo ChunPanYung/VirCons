@@ -1,4 +1,4 @@
-# podman build --tag local/ssh-agent-python:latest <this_file>
+# podman build --tag local/ssh-agent-python:latest --file <this_file>
 FROM jenkins/ssh-agent:latest
 USER root:root
 
