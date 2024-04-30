@@ -1,5 +1,5 @@
 ---
-# podman-compose -f <this_file>.yaml up --build --detach
+# podman-compose --file <this_file> up --build --detach
 version: '3.8'
 
 volumes:
