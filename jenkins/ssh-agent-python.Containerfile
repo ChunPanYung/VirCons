@@ -5,6 +5,8 @@ USER root:root
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && \
     apt install --yes python3 python3-pip pipx && \
-    apt clean && \
-    pipx install --include-deps ansible && \
+    apt clean
+
+USER jenkins:jenkins
+RUN pipx install --include-deps ansible && \
     pipx ensurepath
