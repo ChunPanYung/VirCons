@@ -10,8 +10,6 @@ RUN apt update && \
 ENV PATH="/home/jenkins/.local/bin:${PATH}"
 RUN echo "PATH=${PATH}" >> /etc/environment
 
-RUN pipx install --include-deps --global ansible
-
 USER jenkins:jenkins
 
 RUN pipx ensurepath && \
