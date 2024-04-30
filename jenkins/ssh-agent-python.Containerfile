@@ -7,6 +7,7 @@ RUN apt update && \
     apt install --yes python3 python3-pip pipx && \
     apt clean
 
+# Add new location to PATH variable
 ENV PATH="/home/jenkins/.local/bin:${PATH}"
 RUN echo "PATH=${PATH}" >> /etc/environment
 
