@@ -7,6 +7,9 @@ RUN apt update && \
     apt install --yes python3 python3-pip pipx && \
     apt clean
 
+ENV PATH="/home/jenkins/.local/bin:${PATH}"
+RUN echo "PATH=${PATH}" >> /etc/environment
+
 USER jenkins:jenkins
-RUN pipx install --include-deps ansible && \
-    pipx ensurepath
+RUN pipx install --include-deps ansible
+
