@@ -5,7 +5,10 @@ USER root:root
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && \
     apt install --yes python3 python3-pip pipx && \
-    apt clean
+    apt clean && \
+    pipx ensurepath && \
+    pipx ensurepath --global
+    pipx install --include-deps ansible && \
 
 ENV PATH="/home/jenkins/.local/bin:${PATH}"
 RUN echo "PATH=${PATH}" >> /etc/environment
