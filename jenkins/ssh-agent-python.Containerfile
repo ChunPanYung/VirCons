@@ -11,6 +11,4 @@ ENV PATH="/home/jenkins/.local/bin:${PATH}"
 RUN echo "PATH=${PATH}" >> /etc/environment
 
 USER jenkins:jenkins
-
-RUN pipx ensurepath && \
-    pipx install --include-deps ansible
+RUN pipx install --include-deps ansible
