@@ -3,14 +3,13 @@ FROM jenkins/ssh-agent:latest
 USER root:root
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV ANSIBLE_VENV=/opt/ansible
 RUN apt update && \
-    apt install --yes python3 python3-pip pipx && \
-    apt clean
+    apt install --yes python3 micro && \
+    apt clean && \
+    source ${ANSIBLE_VENV}/bin/activate && \
+    python3 -m venv ${ANSIBLE_VENV} && \
+    python3 -m pip3 install ansible && \
 
-ENV JENKINS_AGENT_HOME=/home/jenkins
-# Add new location to PATH variable
-ENV PATH="${JENKINS_AGENT_HOME}/.local/bin:${PATH}"
+ENV PATH="${ANSIBLE_VENV}/bin:${PATH}"
 RUN echo "PATH=${PATH}" >> /etc/environment
-
-USER jenkins:jenkins
-RUN pipx install --include-deps ansible
