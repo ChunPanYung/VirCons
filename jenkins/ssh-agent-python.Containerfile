@@ -14,7 +14,3 @@ RUN echo "PATH=${PATH}" >> /etc/environment
 
 USER jenkins:jenkins
 RUN pipx install --include-deps ansible
-
-ARG JENKINS_AGENT_CONFIG=/usr/local/etc/jenkins
-COPY ${JENKINS_AGENT_CONFIG}/ssh/* ${JENKINS_AGENT_HOME}/.ssh/
-
