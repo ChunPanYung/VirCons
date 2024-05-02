@@ -4,13 +4,12 @@ USER root:root
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && \
-    apt install --yes python3 python3-pip micro && \
-    apt clean && \
+    apt install --yes python3 pipx micro && \
+    apt clean
 
+ENV PIPX_HOME=/opt/pipx 
+ENV PIPX_BIN_DIR=/usr/local/bin 
+ENV PIPX_MAN_DIR=/usr/local/share/man
 
-ENV ANSIBLE_VENV=/opt/ansible
-ENV PATH="${ANSIBLE_VENV}/bin:${PATH}"
-RUN python3 -m venv ${ANSIBLE_VENV} && \
-    pip3 install ansible
+RUN pipx install --include-deps ansible
 
-RUN echo "PATH=${PATH}" >> /etc/environment
