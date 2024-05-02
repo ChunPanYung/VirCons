@@ -4,7 +4,7 @@ USER root:root
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && \
-    apt install --yes python3 micro && \
+    apt install --yes python3 python3-pip micro && \
     apt clean && \
 
 
