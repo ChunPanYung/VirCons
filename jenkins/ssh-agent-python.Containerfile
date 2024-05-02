@@ -9,7 +9,6 @@ RUN python3 -m venv ${ANSIBLE_VENV}
 ENV PATH="${ANSIBLE_VENV}/bin:${PATH}"
 RUN pip3 install ansible
 
-# Install python3 and copy vircutlenv to this image
 FROM jenkins/ssh-agent:latest
 USER root:root
 
@@ -19,6 +18,7 @@ RUN apt update && \
     apt clean
 
 ENV ANSIBLE_VENV=/opt/ansible
-COPY --from=python-compiler ${ANSIBLE_VENV} /opt/
+COPY --from=python-compiler ${ANSIBLE_VENV} /opt/ansible/
 
 ENV PATH="${ANSIBLE_VENV}/bin:${PATH}"
+RUN echo "PATH=${PATH}" >> /etc/environment
