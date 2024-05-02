@@ -1,5 +1,5 @@
 # podman build --tag ssh-agent-python:latest --file <this_file>
-FROM python:3.12-slim as python-compiler
+FROM python:3.11-slim as python-compiler
 ENV PYTHONUNBUFFERED 1
 
 ENV ANSIBLE_VENV=/opt/ansible
