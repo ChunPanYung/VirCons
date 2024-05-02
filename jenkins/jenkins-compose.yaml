@@ -1,5 +1,5 @@
 ---
-# podman-compose --file <this_file> up --build --detach
+# podman-compose --file <this_file> up --force-recreate --detach --build --pull
 version: '3.8'
 
 volumes:
@@ -22,6 +22,9 @@ services:
 
   ssh-agent-python:
     image: localhost/ssh-agent-python:latest
+    build:
+      context: .
+      dockerfile: ssh-agent-python.Containerfile
     privileged: true
     user: root
     container_name: ssh-agent-python

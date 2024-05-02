@@ -4,12 +4,13 @@ USER root:root
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && \
-    apt install --yes python3 python3-pip pipx && \
+    apt install --yes python3 pipx micro && \
     apt clean
 
-# Add new location to PATH variable
-ENV PATH="/home/jenkins/.local/bin:${PATH}"
-RUN echo "PATH=${PATH}" >> /etc/environment
+# Install packages via pipx
+ENV PIPX_HOME=/opt/pipx
+ENV PIPX_BIN_DIR=/usr/local/bin
+ENV PIPX_MAN_DIR=/usr/local/share/man
 
-USER jenkins:jenkins
 RUN pipx install --include-deps ansible
+
