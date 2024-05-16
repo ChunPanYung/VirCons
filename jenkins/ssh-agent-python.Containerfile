@@ -14,3 +14,4 @@ ENV PIPX_MAN_DIR=/usr/local/share/man
 
 RUN pipx install --include-deps ansible
 
+COPY ssh_config /etc/ssh/sshd_config.d/localKeyChecking
