@@ -8,7 +8,7 @@ volumes:
 
 services:
   jenkins-controller:
-    image: jenkins/jenkins:lts-jdk17
+    image: docker.io/jenkins/jenkins:lts-jdk17
     privileged: true
     user: root
     container_name: jenkins-controller

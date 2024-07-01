@@ -1,4 +1,0 @@
-# Place this file in directy: /etc/ssh/sshd_config.d/
-Host 192.168.8.*
-    StrictHostKeyChecking no
-    UserKnownHostsFile=/dev/null

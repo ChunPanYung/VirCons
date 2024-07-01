@@ -1,5 +1,5 @@
 # podman build --tag ssh-agent-python:latest --file <this_file>
-FROM jenkins/ssh-agent:latest
+FROM docker.io/jenkins/ssh-agent:latest
 USER root:root
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -14,4 +14,3 @@ ENV PIPX_MAN_DIR=/usr/local/share/man
 
 RUN pipx install --include-deps ansible
 
-COPY ssh_config /etc/ssh/sshd_config.d/keyChecking.conf
