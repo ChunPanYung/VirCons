@@ -1,0 +1,11 @@
+# Copy to: /etc/containers/systemd/
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=localhost/ssh-agent-python:latest
+ContainerName=ssh-agent-python
+User=root
+Pull=true
+ExposeHostPort=22
+Environment=JENKINS_AGENT_SSH_PUBKEY=${JENKINS_AGENT_SSH_PUBKEY}

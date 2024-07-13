@@ -1,0 +1,13 @@
+# Copy to: /etc/containers/systemd/
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=docker.io/jenkins/jenkins:lts-jdk17
+ContainerName=jenkins-controller
+User=root
+PublishPort=8080
+PublishPort=50000
+Pull=true
+Volume=jenkins_home
+AutoUpdate=registry

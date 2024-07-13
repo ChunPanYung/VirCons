@@ -1,0 +1,3 @@
+[Build]
+File=ssh-agent-python.Containerfile
+ImageTag=ssh-agent-python:latest
