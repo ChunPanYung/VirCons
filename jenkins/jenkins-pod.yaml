@@ -1,0 +1,36 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-5.2.2
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-pod
+  labels:
+    app: jenkins-pod
+spec:
+  containers:
+    - name: ssh-agent-python
+      image: localhost/ssh-agent-python:latest
+      ports:
+        - containerPort: 8080
+          hostIP: 0.0.0.0
+          hostPort: 8080
+        - containerPort: 50000
+          hostIP: 0.0.0.0
+          hostPort: 50000
+      envFrom:
+        - secretRef:
+            name: prod-secret
+      securityContext: {}
+
+    - name: jenkins-controller
+      image: docker.io/jenkins/jenkins:lts-jdk17
+      securityContext: {}
+      volumeMounts:
+        - mountPath: /var/jenkins_home
+          name: jenkins_home-pvc
+  volumes:
+    - name: jenkins_home-pvc
+      persistentVolumeClaim:
+        claimName: jenkins_home
