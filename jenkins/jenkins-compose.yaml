@@ -1,6 +1,6 @@
 ---
 # podman-compose --file <this_file> up --force-recreate --detach --build --pull
-version: '3.8'
+version: "3.8"
 
 volumes:
   jenkins_home:
@@ -19,6 +19,10 @@ services:
       - type: volume
         source: jenkins_home
         target: /var/jenkins_home
+    labels:
+      io.containers.autoupdate: registry
+    restart: on-failure
+    pull_policy: always
 
   ssh-agent-python:
     image: localhost/ssh-agent-python:latest
@@ -28,7 +32,11 @@ services:
     privileged: true
     user: root
     container_name: ssh-agent-python
+    labels:
+      io.containers.autoupdate: registry
     expose:
       - 22
     environment:
       - JENKINS_AGENT_SSH_PUBKEY=${JENKINS_AGENT_SSH_PUBKEY}
+    restart: on-failure
+    pull_policy: build
