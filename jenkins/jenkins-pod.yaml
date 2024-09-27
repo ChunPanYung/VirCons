@@ -21,7 +21,7 @@ spec:
       securityContext: {}
 
     - name: jenkins-controller
-      image: docker.io/jenkins/jenkins:lts-jdk17
+      image: localhost/jenkins-controller:latest
       securityContext:
         fsGroup: 1000
       volumeMounts:
