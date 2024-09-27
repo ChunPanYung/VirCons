@@ -19,14 +19,17 @@ spec:
         - containerPort: 50000
           hostIP: 0.0.0.0
           hostPort: 50000
-      envFrom:
-        - secretRef:
-            name: prod-secret
+      secret:
+        secretName: prod-secret
+      # envFrom:
+      #   - secretRef:
+      #       name: prod-secret
       securityContext: {}
 
     - name: jenkins-controller
       image: docker.io/jenkins/jenkins:lts-jdk17
-      securityContext: {}
+      securityContext:
+        fsGroup: 1000
       volumeMounts:
         - mountPath: /var/jenkins_home
           name: jenkins_home-pvc
