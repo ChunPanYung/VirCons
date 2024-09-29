@@ -1,0 +1,3 @@
+[Kube]
+AutoUpdate=registry
+Yaml=onlyoffice.yaml
