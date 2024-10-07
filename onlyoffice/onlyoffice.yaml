@@ -14,6 +14,10 @@ spec:
           hostPort: 8080
         - containerPort: 443
           hostPort: 8443
-      secret:
-        secretName: onlyoffice-secret
+      env:
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: onlyoffice-secret
+              key: JWT_SECRET
       securityContext: {}
