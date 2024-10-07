@@ -8,12 +8,10 @@ metadata:
 spec:
   containers:
     - name: onlyoffice
-      image: docker.io/onlyoffice/documentserver:latest
+      image: "docker.io/onlyoffice/documentserver:latest"
       ports:
         - containerPort: 80
-          hostPort: 8080
-        - containerPort: 443
-          hostPort: 8443
+          hostPort: 80
       env:
         - name: JWT_SECRET
           valueFrom:
