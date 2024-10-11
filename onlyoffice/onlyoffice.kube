@@ -1,0 +1,7 @@
+[Kube]
+AutoUpdate=registry
+Yaml=onlyoffice.yaml
+
+[Install]
+# Start this on boot
+WantedBy=default.target

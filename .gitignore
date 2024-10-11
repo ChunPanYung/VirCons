@@ -1,5 +1,5 @@
-.env
-tunnel.env
+*.env
 TODO.md
 
 Caddyfile
+*secret*
