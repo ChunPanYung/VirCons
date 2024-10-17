@@ -8,20 +8,23 @@ metadata:
 spec:
   containers:
     - name: ssh-agent-python
-      image: localhost/ssh-agent-python:latest
-      ports:
-        - containerPort: 8080
-          hostIP: 0.0.0.0
-          hostPort: 8080
-        - containerPort: 50000
-          hostIP: 0.0.0.0
-          hostPort: 50000
-      secret:
-        secretName: prod-secret
+      # image: localhost/ssh-agent-python:latest
+      image: docker.io/jenkins/inbound-agent:latest
+      env:
+        - name: JENKINS_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: jenkins-secret
+              key: JENKINS_SECRET
       securityContext: {}
 
     - name: jenkins-controller
       image: localhost/jenkins-controller:latest
+      ports:
+        - containerPort: 8080
+          hostPort: 8080
+        - containerPort: 50000
+          hostPort: 50000
       securityContext:
         fsGroup: 1000
       volumeMounts:
