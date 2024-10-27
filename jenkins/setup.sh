@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-# onlyoffice setup with podman and quadlet
-cp ./jenkins-pod.kube ./jenkins-pod.yaml /etc/containers/systemd/
+echo "This will help you setup SSH key and create kubernete secret via podman."
+
+# Create directory for storing container data
+tmp_dir=/tmp/jenkins-container.${RANDOM}
+mkdir ${tmp_dir}
+
 # Generate ssh key
-ssh-keygen -f ./ssh_key -t ed25519 -N ""
+ssh-keygen -f ${tmp_dir}/ssh_key -t ed25519 -N ""
 
-base64_data=$(base64 --wrap=0 ./ssh_key.pub)
-# sed --in-place "s/\(\s\sssh-pubkey:\s\).*$/\1${base64_data}/" ./jenkins-key.yml
+base64_data=$(base64 --wrap=0 ${tmp_dir}/ssh_key.pub)
+secret_file_path=${tmp_dir}/jenkins-key.yml
 
-file_path=/tmp/jenkins-key.yml
-cat <<EOF >${file_path}
+cat <<EOF >${secret_file_path}
 ---
 apiVersion: v1
 kind: Secret
@@ -19,5 +22,7 @@ data:
   ssh-pubkey: ${base64_data}
 EOF
 
-podman kube play ${file_path}
-rm ${file_path}
+podman kube play ${secret_file_path}
+
+echo "SSH private key are in ${tmp_dir} ."
+echo "Please remove directory and its content when you are done."
