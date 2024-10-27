@@ -1,4 +1,4 @@
 [Build]
 ImageTag=localhost/jenkins-ssh-agent:latest
-File=ssh-agent.Containerfile
+File=jenkins-ssh-agent.Containerfile
 Pull=newer
