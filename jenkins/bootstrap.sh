@@ -24,5 +24,9 @@ EOF
 
 podman kube play ${secret_file_path}
 
-echo "SSH private key are in ${tmp_dir} ."
+private_key=$(cat ${tmp_dir}/ssh_key)
+echo "SSH private key are:"
+echo "${private_key}"
+echo "All the output files are in ${tmp_dir}"
+echo ""
 echo "Please remove directory and its content when you are done."
