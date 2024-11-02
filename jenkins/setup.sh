@@ -30,3 +30,8 @@ echo "${private_key}"
 echo "All the output files are in ${tmp_dir}"
 echo ""
 echo "Please remove directory and its content when you are done."
+
+cp jenkins-pod.kube jenkins-pod.yaml jenkins-ssh-agent.build \
+  jenkins-ssh-agent.Containerfile /etc/container/systemd/
+
+cp jenkins-ssh-agent-build.timer /etc/systemd/system/
