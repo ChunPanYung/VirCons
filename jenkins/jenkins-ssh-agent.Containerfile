@@ -13,4 +13,3 @@ ENV PIPX_BIN_DIR=/usr/local/bin
 ENV PIPX_MAN_DIR=/usr/local/share/man
 
 RUN pipx install --include-deps ansible
-
