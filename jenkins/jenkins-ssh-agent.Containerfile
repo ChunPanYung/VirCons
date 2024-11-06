@@ -1,4 +1,4 @@
-# podman build --tag ssh-agent-python:latest --file <this_file>
+# podman build --tag jenkins-ssh-agent:latest --file <this_file>
 FROM docker.io/jenkins/ssh-agent:latest
 USER root:root
 
@@ -13,4 +13,3 @@ ENV PIPX_BIN_DIR=/usr/local/bin
 ENV PIPX_MAN_DIR=/usr/local/share/man
 
 RUN pipx install --include-deps ansible
-

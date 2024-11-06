@@ -1,0 +1,13 @@
+# It will start the service with same name but different file extension.
+[Unit]
+Description=Build jenkins ssh agent Monthly
+
+[Timer]
+# Build jenkins ssh agent monthly, and start this service if it missed the last time.
+OnCalendar=*-*-01 02:00:00
+RandomizedDelaySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
