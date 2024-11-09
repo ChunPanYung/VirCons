@@ -1,0 +1,7 @@
+[Kube]
+AutoUpdate=registry
+Yaml=home_assistant-pod.yaml
+
+[Install]
+# Start this on boot
+WantedBy=default.target

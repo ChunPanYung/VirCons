@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: home_assistant-pod
+  labels:
+    app: home_assistant-pod
+spec:
+  containers:
+    - name: home_assistant
+      image: ghcr.io/home-assistant/home-assistant:stable
+      env:
+        - name: TZ
+          value: America/New_York
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - mountPath: /config
+          name: home_assistant_conf-pvc
+        - mountPath: /run/dbus
+          name: dbus
+  volumes:
+    - name: home_assistant_conf-pvc
+      persistentVolumeClaim:
+        claimName: home_assistant_conf
+    - name: dbus
+      hostPath:
+        path: /run/dbus
+        type: Directory
+        readOnly: true
