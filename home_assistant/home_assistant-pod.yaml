@@ -9,6 +9,9 @@ spec:
   containers:
     - name: home_assistant
       image: ghcr.io/home-assistant/home-assistant:stable
+      ports:
+        - containerPort: 8123
+          hostPort: 8123
       env:
         - name: TZ
           value: America/New_York
