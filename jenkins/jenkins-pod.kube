@@ -1,5 +1,5 @@
 [Kube]
-AutoUpdate=registry
+AutoUpdate=local
 Yaml=jenkins-pod.yaml
 
 [Install]
