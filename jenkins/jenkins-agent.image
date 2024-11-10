@@ -1,0 +1,2 @@
+[Image]
+Image=docker.io/jenkins/ssh-agent:latest
