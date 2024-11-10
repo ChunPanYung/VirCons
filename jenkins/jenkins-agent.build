@@ -1,5 +1,5 @@
 [Build]
-ImageTag=localhost/jenkins-ssh-agent:latest
-File=jenkins-ssh-agent.Containerfile
+ImageTag=localhost/jenkins-agent:latest
+File=jenkins-agent.Containerfile
 Pull=newer
 SetWorkingDirectory=file
