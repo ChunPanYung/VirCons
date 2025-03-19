@@ -4,7 +4,7 @@ Description=Pull jenkins ssh agent image Monthly
 
 [Timer]
 # Build jenkins ssh agent monthly, and start this service if it missed the last time.
-OnCalendar=*-*-01 02:00:00
+OnCalendar=weekly
 RandomizedDelaySec=1h
 Persistent=true
 
