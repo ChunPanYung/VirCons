@@ -1,0 +1,15 @@
+{
+  "name": "alpine-base",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "containerEnv": {
+    "EDITOR": "/usr/bin/nvim"
+  },
+  "containerUser": "user",
+  "features": {
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "latest"
+    }
+  }
+}
