@@ -24,8 +24,7 @@ spec:
   volumes:
     - name: 1000-podman.socket
       hostPath:
-        # path: /run/user/1000/podman/podman.sock
-        path: /var/run/podman/podman.sock
+        path: /var/run/podman/podman.sock # sudo required
         type: File
     - name: yacht-pvc
       persistentVolumeClaim:
