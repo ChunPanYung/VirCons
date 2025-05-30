@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: yacht
+  name: yacht
+
+spec:
+  containers:
+    - name: yacht
+      image: ghcr.io/selfhostedpro/yacht:latest
+      securityContext:
+        privileged: true
+      ports:
+        - containerPort: 8000
+          hostPort: 8000
+      volumeMounts:
+        - mountPath: /var/run/docker.sock
+          name: 1000-podman.socket
+        - mountPath: /config
+          name: yacht-pvc
+
+  volumes:
+    - name: 1000-podman.socket
+      hostPath:
+        # path: /run/user/1000/podman/podman.sock
+        path: /var/run/podman/podman.sock
+        type: File
+    - name: yacht-pvc
+      persistentVolumeClaim:
+        claimName: yacht
