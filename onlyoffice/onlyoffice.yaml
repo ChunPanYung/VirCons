@@ -19,3 +19,12 @@ spec:
               name: onlyoffice-secret
               key: JWT_SECRET
       securityContext: {}
+
+    - name: cloudflared
+      image: cloudflare/cldouflared
+      restart: unless-stopped
+      args:
+        - tunnel
+        - run
+      environment:
+        - TUNNEL_TOKEN=mytokegoeshere
