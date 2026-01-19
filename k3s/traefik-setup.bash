@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-read -spr "hostname for traefik: " rules_host
+read -r -p "hostname for traefik: " rules_host
 
 cat >traefik-ingress.yaml <<EOF
 ---
