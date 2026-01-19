@@ -5,7 +5,7 @@ cat >traefik-ingress.yaml <<EOF
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
-  metadata:
+metadata:
   name: traefik-dashboard
   namespace: kube-system
   annotations:
@@ -14,12 +14,12 @@ spec:
   rules:
     - host: ${rules_host}
       http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-          service:
-            name: traefik
-            port:
-            number: 80
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: traefik
+                port:
+                  number: 80
 EOF
