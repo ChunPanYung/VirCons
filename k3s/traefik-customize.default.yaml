@@ -1,0 +1,7 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec: {} # Use K3s default Traefik settings

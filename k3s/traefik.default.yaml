@@ -1,0 +1,13 @@
+---
+# Default values for Traefik (k3s)
+image:
+  name: traefik
+  tag: ""
+  pullPolicy: If NotPresent
+
+deployment:
+  enabled: true
+  kind: Deployment
+  replicas: 1
+  annocations: {}
+  labels: {}
