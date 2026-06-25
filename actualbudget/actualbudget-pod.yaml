@@ -11,17 +11,14 @@ spec:
       image: docker.io/actualbudget/actual-server:latest
       env:
         - name: NODE_EXTRA_CA_CERTS
-          value: "/data/selfhost.crt"
+          value: "/etc/keys/selfhost.crt"
         - name: ACTUAL_HTTPS_KEY
-          value: "/data/selfhost.key"
+          value: "/etc/keys/selfhost.key"
         - name: ACTUAL_HTTPS_CERT
-          value: "/data/selfhost.crt"
+          value: "/etc/keys/selfhost.crt"
       ports:
         - containerPort: 5006
           hostPort: 5006
-      volumeMounts:
-        - mountPath: /data
-          name: actualbudget_data-pvc
       securityContext: {}
       livenessProbe:
         exec:
@@ -30,8 +27,17 @@ spec:
             - scripts/health-check.js
         initialDelaySeconds: 20
         periodSeconds: 60
+      volumeMounts:
+        - mountPath: /data
+          name: actualbudget_data-pvc
+        - name: selfhost-secret
+          mountPath: /etc/keys
+          readOnly: true
 
   volumes:
     - name: actualbudget_data-pvc
       persistentVolumeClaim:
         claimName: actualbudget_data
+    - name: selfhost-secret
+      secret:
+        secretName: selfhost-secret
