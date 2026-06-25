@@ -9,6 +9,13 @@ spec:
   containers:
     - name: actualbudget
       image: docker.io/actualbudget/actual-server:latest
+      env:
+        - name: NODE_EXTRA_CA_CERTS
+          value: "/data/selfhost.crt"
+        - name: ACTUAL_HTTPS_KEY
+          value: "/data/selfhost.key"
+        - name: ACTUAL_HTTPS_CERT
+          value: "/data/selfhost.crt"
       ports:
         - containerPort: 5006
           hostPort: 5006
