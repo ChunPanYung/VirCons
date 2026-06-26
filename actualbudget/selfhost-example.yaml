@@ -1,0 +1,17 @@
+---
+# This is an example file once you had selfhost certificate and key.
+# You can set it up as kubernetes secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: selfhost-secret
+immutable: true
+data:
+  selfhost.crt: |
+    -----BEGIN CERTIFICATE-----
+    <must be base64 encoding>
+    -----END CERTIFICATE-----
+  selfhost.key: |
+    -----BEGIN PRIVATE KEY-----
+    <must be base64 encoding>
+    -----END PRIVATE KEY-----
